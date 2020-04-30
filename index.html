@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>模拟重力场</title>
+    <title>拖拽运动</title>
     <style>
         div {
             position: absolute;
@@ -21,17 +21,56 @@
 <body>
     <div></div>
     <script>
-        var Odiv = document.getElementsByTagName("div")[0],
-            timer = null;
-        Odiv.onclick = function () {
-            gravityMove(this, 400);
+        var Odiv = document.getElementsByTagName("div")[0];
+        var lastLeft = 0,
+            lastTop = 0,
+            IspeedX = 0,
+            IspeedY = 0;
+
+        Odiv.onmousedown = function (e) {
+            clearInterval(this.timer);
+            var event = window.event || e;
+            var disX = event.clientX - Odiv.offsetLeft;
+            var disY = event.clientY - Odiv.offsetTop;
+            var self = this;
+            document.onmousemove = function (e) {
+                var event = window.event || e;
+                var newLeft = event.clientX - disX;
+                var newTop = event.clientY - disY;
+                IspeedX = newLeft - lastLeft;
+                IspeedY = newTop - lastTop;
+                lastLeft = newLeft;
+                lastTop = newTop;
+
+
+
+
+
+                var Ospan = document.createElement("span");
+                Ospan.style.position = "absolute";
+                Ospan.style.left = newLeft + "px";
+                Ospan.style.top = newTop + "px";
+                Ospan.style.width = "6px";
+                Ospan.style.height = "6px";
+                Ospan.style.backgroundColor = "black";
+                document.body.appendChild(Ospan);
+
+
+                self.style.left = newLeft + "px";
+                self.style.top = newTop + "px";
+            }
+            document.onmouseup = function (e) {
+                document.onmouseup = null;
+                document.onmousemove = null;
+                gravityMove(self, IspeedX, IspeedY);
+            }
         }
-        function gravityMove(dom) {
-            clearInterval(timer);
-            var IspeedX = 6,
-                IspeedY = 8,
-                g = 3;
-            timer = setInterval(function () {
+
+
+        function gravityMove(dom, IspeedX, IspeedY) {
+            clearInterval(dom.timer);
+            var g = 3;
+            dom.timer = setInterval(function () {
                 IspeedY += g;
                 var newLeft = dom.offsetLeft + IspeedX;
                 var newTop = dom.offsetTop + IspeedY;
@@ -66,9 +105,10 @@
                     IspeedY = 0;
                 }
                 if (IspeedX == 0 && IspeedY == 0 && newTop == document.documentElement.clientHeight - dom.clientHeight) {
-                    clearInterval(timer);
+                    clearInterval(dom.timer);
+                    console.log("over")
                 }
-                console.log(IspeedX, IspeedY);
+                // console.log(IspeedX, IspeedY);
                 dom.style.top = newTop + "px";
                 dom.style.left = newLeft + "px";
             }, 30)
