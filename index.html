@@ -7,51 +7,90 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>弹性运动</title>
     <style>
-        div {
-            position: absolute;
-            left: 0;
-            top: 30px;
-            height: 80px;
-            width: 80px;
-            border-radius: 50%;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            position: relative;
+            list-style: none;
+            width: 200px;
+            height: 100px;
+            margin: 100px auto 0;
+        }
+
+        /* ul::after {
+            content: '';
+            display: block;
+            clear: both;
+        } */
+
+        .liContent {
+            float: left;
+            width: 98px;
+            height: 98px;
+            border: 1px solid black;
+            line-height: 100px;
+            text-align: center;
             background-color: brown;
         }
 
-        span {
+        .liBg {
             position: absolute;
-            top: 15px;
-            left: 100px;
-            width: 2px;
-            height: 110px;
-            background-color: black;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            opacity: 0.4;
         }
     </style>
 </head>
 
 <body>
-    <div></div>
-    <span></span>
+    <ul>
+        <li class="liContent">1111</li>
+        <li class="liContent">2222</li>
+        <li class="liContent">3333</li>
+        <li class="liContent">4444</li>
+        <li class="liBg"></li>
+    </ul>
     <script>
-        var Odiv = document.getElementsByTagName("div")[0],
-            Ospan = document.getElementsByTagName("span")[0],
-            timer = null;
+        var OliList = document.getElementsByTagName("li"),
+            timer = null,
+            OliBg = OliList[OliList.length - 1];
 
-        Odiv.onclick = function () {
-            elasticMove(this, 100);
+        for (var i = 0; i < OliList.length - 1; i++) {
+            OliList[i].onclick = function () {
+                elasticMove(OliBg, this.offsetLeft, this.offsetTop);
+            }
         }
 
-
-        function elasticMove(dom, target) {
+        // 封装一个弹性运动函数
+        function elasticMove(dom, targetX, targetY) {
             clearInterval(timer);
-            var Ispeed = 0,
-                a = 2
+            var IspeedX = 0,
+                IspeedY = 0,
+                a = null,
+                b = null,
+                u = 0.9;
             timer = setInterval(function () {
-                if (dom.offsetLeft < target) {
-                    Ispeed += a;
-                } else {
-                    Ispeed -= a;
+                var bShop = true;
+                a = (targetX - dom.offsetLeft) / 7;
+                b = (targetY - dom.offsetTop) / 7;
+                IspeedX += a;
+                IspeedX *= u;
+                IspeedY += b;
+                IspeedY *= u;
+                dom.style.left = dom.offsetLeft + IspeedX + "px";
+                dom.style.top = dom.offsetTop + IspeedY + "px";
+                if (Math.abs(IspeedX) < 1 && Math.abs(targetX - dom.offsetLeft) < 1 && Math.abs(IspeedY) < 1 && Math.abs(targetY - dom.offsetTop) < 1) {
+                    clearInterval(timer);
+                    dom.style.left = targetX + "px";
+                    dom.style.top = targetY + "px";
                 }
-                Odiv.style.left = Odiv.offsetLeft + Ispeed + "px";
+                console.log(IspeedY, targetY - dom.offsetTop);
             }, 30)
         }
     </script>
