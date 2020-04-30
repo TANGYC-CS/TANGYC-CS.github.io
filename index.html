@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>试着拖拽物体然后抛出方块吧</title>
+    <title>模拟重力场</title>
     <style>
         div {
             position: absolute;
@@ -14,6 +14,7 @@
             height: 100px;
             width: 100px;
             background-color: brown;
+            /* border-radius: 50%; */
         }
     </style>
 </head>
@@ -22,53 +23,6 @@
     <div></div>
     <script>
         var Odiv = document.getElementsByTagName("div")[0];
-        var lastLeft = 0,
-            lastTop = 0,
-            IspeedX = 0,
-            IspeedY = 0;
-
-
-
-
-        Odiv.ontouchstart = function (e) {
-            clearInterval(this.timer);
-            var event = window.event || e;
-            var disX = event.clientX - Odiv.offsetLeft;
-            var disY = event.clientY - Odiv.offsetTop;
-            var self = this;
-            document.ontouchmove = function (e) {
-                var event = window.event || e;
-                var newLeft = event.clientX - disX;
-                var newTop = event.clientY - disY;
-                IspeedX = newLeft - lastLeft;
-                IspeedY = newTop - lastTop;
-                lastLeft = newLeft;
-                lastTop = newTop;
-
-
-                var Ospan = document.createElement("span");
-                Ospan.style.position = "absolute";
-                Ospan.style.left = newLeft + "px";
-                Ospan.style.top = newTop + "px";
-                Ospan.style.width = "6px";
-                Ospan.style.height = "6px";
-                Ospan.style.backgroundColor = "black";
-                document.body.appendChild(Ospan);
-
-
-                self.style.left = newLeft + "px";
-                self.style.top = newTop + "px";
-            }
-            document.ontouchend = function (e) {
-                document.ontouchend = null;
-                document.ontouchmove = null;
-                gravityMove(self, IspeedX, IspeedY);
-            }
-        }
-
-
-
-
 
         function gravityMove(dom, IspeedX, IspeedY) {
             clearInterval(dom.timer);
