@@ -29,79 +29,43 @@
 
 
 
-        if (window.ontouchstart) {
-            Odiv.ontouchstart = function (e) {
-                clearInterval(this.timer);
+
+        Odiv.ontouchstart = function (e) {
+            clearInterval(this.timer);
+            var event = window.event || e;
+            var disX = event.clientX - Odiv.offsetLeft;
+            var disY = event.clientY - Odiv.offsetTop;
+            var self = this;
+            document.ontouchmove = function (e) {
                 var event = window.event || e;
-                var disX = event.clientX - Odiv.offsetLeft;
-                var disY = event.clientY - Odiv.offsetTop;
-                var self = this;
-                document.ontouchmove = function (e) {
-                    var event = window.event || e;
-                    var newLeft = event.clientX - disX;
-                    var newTop = event.clientY - disY;
-                    IspeedX = newLeft - lastLeft;
-                    IspeedY = newTop - lastTop;
-                    lastLeft = newLeft;
-                    lastTop = newTop;
+                var newLeft = event.clientX - disX;
+                var newTop = event.clientY - disY;
+                IspeedX = newLeft - lastLeft;
+                IspeedY = newTop - lastTop;
+                lastLeft = newLeft;
+                lastTop = newTop;
 
 
-                    var Ospan = document.createElement("span");
-                    Ospan.style.position = "absolute";
-                    Ospan.style.left = newLeft + "px";
-                    Ospan.style.top = newTop + "px";
-                    Ospan.style.width = "6px";
-                    Ospan.style.height = "6px";
-                    Ospan.style.backgroundColor = "black";
-                    document.body.appendChild(Ospan);
+                var Ospan = document.createElement("span");
+                Ospan.style.position = "absolute";
+                Ospan.style.left = newLeft + "px";
+                Ospan.style.top = newTop + "px";
+                Ospan.style.width = "6px";
+                Ospan.style.height = "6px";
+                Ospan.style.backgroundColor = "black";
+                document.body.appendChild(Ospan);
 
 
-                    self.style.left = newLeft + "px";
-                    self.style.top = newTop + "px";
-                }
-                document.ontouchend = function (e) {
-                    document.ontouchend = null;
-                    document.ontouchmove = null;
-                    gravityMove(self, IspeedX, IspeedY);
-                }
+                self.style.left = newLeft + "px";
+                self.style.top = newTop + "px";
             }
-        } else {
-            Odiv.onmousedown = function (e) {
-                clearInterval(this.timer);
-                var event = window.event || e;
-                var disX = event.clientX - Odiv.offsetLeft;
-                var disY = event.clientY - Odiv.offsetTop;
-                var self = this;
-                document.onmousemove = function (e) {
-                    var event = window.event || e;
-                    var newLeft = event.clientX - disX;
-                    var newTop = event.clientY - disY;
-                    IspeedX = newLeft - lastLeft;
-                    IspeedY = newTop - lastTop;
-                    lastLeft = newLeft;
-                    lastTop = newTop;
-
-
-                    var Ospan = document.createElement("span");
-                    Ospan.style.position = "absolute";
-                    Ospan.style.left = newLeft + "px";
-                    Ospan.style.top = newTop + "px";
-                    Ospan.style.width = "6px";
-                    Ospan.style.height = "6px";
-                    Ospan.style.backgroundColor = "black";
-                    document.body.appendChild(Ospan);
-
-
-                    self.style.left = newLeft + "px";
-                    self.style.top = newTop + "px";
-                }
-                document.onmouseup = function (e) {
-                    document.onmouseup = null;
-                    document.onmousemove = null;
-                    gravityMove(self, IspeedX, IspeedY);
-                }
+            document.ontouchend = function (e) {
+                document.ontouchend = null;
+                document.ontouchmove = null;
+                gravityMove(self, IspeedX, IspeedY);
             }
         }
+
 
 
 
