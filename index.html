@@ -5,94 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>弹性运动</title>
+    <title>模拟重力场</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        ul {
-            position: relative;
-            list-style: none;
-            width: 200px;
-            height: 100px;
-            margin: 100px auto 0;
-        }
-
-        /* ul::after {
-            content: '';
-            display: block;
-            clear: both;
-        } */
-
-        .liContent {
-            float: left;
-            width: 98px;
-            height: 98px;
-            border: 1px solid black;
-            line-height: 100px;
-            text-align: center;
-            background-color: brown;
-        }
-
-        .liBg {
+        div {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100px;
             height: 100px;
-            background-color: #fff;
-            opacity: 0.4;
+            width: 100px;
+            background-color: brown;
         }
     </style>
 </head>
 
 <body>
-    <ul>
-        <li class="liContent">1111</li>
-        <li class="liContent">2222</li>
-        <li class="liContent">3333</li>
-        <li class="liContent">4444</li>
-        <li class="liBg"></li>
-    </ul>
+    <div></div>
     <script>
-        var OliList = document.getElementsByTagName("li"),
-            timer = null,
-            OliBg = OliList[OliList.length - 1];
-
-        for (var i = 0; i < OliList.length - 1; i++) {
-            OliList[i].onclick = function () {
-                elasticMove(OliBg, this.offsetLeft, this.offsetTop);
-            }
+        var Odiv = document.getElementsByTagName("div")[0],
+            timer = null;
+        Odiv.onclick = function () {
+            gravityMove(this, 400);
         }
-
-        // 封装一个弹性运动函数
-        function elasticMove(dom, targetX, targetY) {
+        function gravityMove(dom) {
             clearInterval(timer);
-            var IspeedX = 0,
-                IspeedY = 0,
-                a = null,
-                b = null,
-                u = 0.9;
+            var IspeedX = 6,
+                IspeedY = 8,
+                g = 3;
             timer = setInterval(function () {
-                var bShop = true;
-                a = (targetX - dom.offsetLeft) / 7;
-                b = (targetY - dom.offsetTop) / 7;
-                IspeedX += a;
-                IspeedX *= u;
-                IspeedY += b;
-                IspeedY *= u;
-                dom.style.left = dom.offsetLeft + IspeedX + "px";
-                dom.style.top = dom.offsetTop + IspeedY + "px";
-                if (Math.abs(IspeedX) < 1 && Math.abs(targetX - dom.offsetLeft) < 1 && Math.abs(IspeedY) < 1 && Math.abs(targetY - dom.offsetTop) < 1) {
-                    clearInterval(timer);
-                    dom.style.left = targetX + "px";
-                    dom.style.top = targetY + "px";
+                IspeedY += g;
+                var newLeft = dom.offsetLeft + IspeedX;
+                var newTop = dom.offsetTop + IspeedY;
+                if (newTop >= document.documentElement.clientHeight - dom.clientHeight) {
+                    IspeedY *= -1;
+                    IspeedY *= 0.8;
+                    IspeedX *= 0.8;
+                    newTop = document.documentElement.clientHeight - dom.clientHeight;
                 }
-                console.log(IspeedY, targetY - dom.offsetTop);
+                if (newTop <= 0) {
+                    IspeedY *= -1;
+                    IspeedY *= 0.8;
+                    IspeedX *= 0.8;
+                    newTop = 0;
+                }
+                if (newLeft >= document.documentElement.clientWidth - dom.clientWidth) {
+                    IspeedX *= -1;
+                    IspeedY *= 0.8;
+                    IspeedX *= 0.8;
+                    newLeft = document.documentElement.clientWidth - dom.clientWidth;
+                }
+                if (newLeft <= 0) {
+                    IspeedX *= -1;
+                    IspeedY *= 0.8;
+                    IspeedX *= 0.8;
+                    newLeft = 0;
+                }
+                if (Math.abs(IspeedX) < 1) {
+                    IspeedX = 0;
+                }
+                if (Math.abs(IspeedY) < 1) {
+                    IspeedY = 0;
+                }
+                if (IspeedX == 0 && IspeedY == 0 && newTop == document.documentElement.clientHeight - dom.clientHeight) {
+                    clearInterval(timer);
+                }
+                console.log(IspeedX, IspeedY);
+                dom.style.top = newTop + "px";
+                dom.style.left = newLeft + "px";
             }, 30)
         }
+
+
     </script>
 </body>
 
