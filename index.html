@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调地狱</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .tpl {
+            display: none;
+        }
+
+        .wrapper {
+            overflow: hidden;
+            border: 2px solid black;
+            width: 370px;
+            margin: 50px auto 0px;
+        }
+
+        .movieSection {
+            margin: 4px 6px;
+            float: left;
+            padding: 5px;
+        }
+
+        .movieSection img {
+            width: 100px;
+            height: 148px;
+            cursor: pointer;
+        }
+
+        .movieSection h3 {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .discreption {
+            width: 370px;
+            margin: 30px auto 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class='tpl'>
+            <img src=""></img>
+            <h3 class='movieName'></h3>
+        </div>
+    </div>
+    <div class="discreption"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        // $.ajax({
+        //     url: "https://open.duyiedu.com/jq/movie/power",
+        //     type: "POST",
+        //     data: {
+        //         username: "cst",
+        //         password: "123123"
+        //     },
+        //     success: function (res) {
+        //         // console.log(res);
+        //         if (res.data.power == "root") {
+        //             $.ajax({
+        //                 url: "https://open.duyiedu.com/jq/movie/movieList",
+        //                 type: "GET",
+        //                 success: function (res) {
+        //                     var posterurl = [
+        //                         "https://img1.doubanio.com/view/photo/m/public/p2541280047.jpg",
+        //                         "https://img9.doubanio.com/view/photo/l/public/p2532537044.jpg",
+        //                         "https://img9.doubanio.com/view/photo/m/public/p2539661066.jpg",
+        //                         "https://img1.doubanio.com/view/photo/l/public/p2538681027.jpg",
+        //                         "https://img3.doubanio.com/view/photo/m/public/p2537158013.jpg",
+        //                         "https://img9.doubanio.com/view/photo/m/public/p2561305376.jpg"
+        //                     ];
+        //                     var data = res.data;
+        //                     for (var i = 0; i < data.length; i++) {
+        //                         data[i].postersrc = posterurl[i];
+        //                         console.log(data[i])
+        //                     }
+        //                     // console.log(data);
+        //                     var $wrapper = $(".wrapper");
+        //                     $.each(data, function (index, ele) {
+        //                         var $movieSection = $(".tpl").clone().removeClass("tpl").addClass("movieSection");
+        //                         $movieSection
+        //                             .data({ id: ele.id })
+        //                             .on("click", function () {
+
+        //                                 var $discreption = $(".discreption")
+        //                                 $discreption.hide().find(".mask").remove();
+        //                                 // $(htmlStr).remove();
+        //                                 // console.log($(this).data("id"))
+        //                                 $.ajax({
+        //                                     url: "https://open.duyiedu.com/jq/movie//movieInfo",
+        //                                     type: "GET",
+        //                                     data: {
+        //                                         movieId: $(this).data("id")
+        //                                     },
+        //                                     success: function (res) {
+        //                                         console.log(res);
+
+        //                                         var data = res.data;
+        //                                         var name = data.name;
+        //                                         var direct = data.direct;
+        //                                         var gut = data.gut;
+        //                                         var mainActor = data.mainActor;
+        //                                         var screenWritter = data.screenwritter;
+        //                                         var numOne = 0;
+        //                                         var numTwo = 0;
+
+        //                                         var htmlStr = '<div class="mask">\
+        //                                             <p>名称：'+ name + '</p>\
+        //                                             <span>导演：'+ direct + ' </span></br>\
+        //                                             <p>简介：'+ gut + ' </p></br>\
+        //                                             <p>主要演员：'+ mainActor.reduce(function (prev, curv, index) {
+        //                                             numOne++;
+        //                                             if (numOne == mainActor.length) {
+        //                                                 prev += curv + "。"
+        //                                             } else {
+        //                                                 prev += curv + "、";
+        //                                             }
+        //                                             return prev;
+        //                                         }, "") + ' </p></br>\
+        //                                             <p>编剧：'+ screenWritter.reduce(function (prev, curv) {
+        //                                             numTwo++;
+        //                                             if (numTwo == screenWritter.length) {
+        //                                                 prev += curv + "。"
+        //                                             } else {
+        //                                                 prev += curv + "、";
+        //                                             }
+        //                                             return prev;
+        //                                         }, "") + ' </p></br>\
+        //                                             </div > '
+        //                                         $(htmlStr)
+        //                                             .appendTo($discreption);
+        //                                         $discreption.fadeIn();
+        //                                     }
+        //                                 })
+        //                             })
+        //                             .children()
+        //                             .eq(0)
+        //                             .attr("src", ele.postersrc)
+        //                             // .attr("src", postersrc)
+        //                             .next()
+        //                             .text(ele.name);
+        //                         $wrapper.append($movieSection);
+
+        //                     })
+
+        //                 }
+        //             })
+        //         }
+        //     },
+        //     error: function (e) {
+        //         console.log(e.status, e.statusText)
+        //     }
+
+        // })
+
+        // then的用法
+        var $discreption = $(".discreption");
+        var cb = $.Callbacks();
+
+        function clear() {
+            $discreption.hide().find(".mask").remove();
+        }
+        cb.add(clear);
+        function handleClick(id) {
+            $.ajax({
+                url: "https://open.duyiedu.com/jq/movie//movieInfo",
+                type: "GET",
+                data: {
+                    movieId: id
+                },
+            }).success(function (res) {
+                console.log(res);
+
+                var data = res.data;
+                var name = data.name;
+                var direct = data.direct;
+                var gut = data.gut;
+                var mainActor = data.mainActor;
+                var screenWritter = data.screenwritter;
+                var numOne = 0;
+                var numTwo = 0;
+
+                var htmlStr = '<div class="mask">\
+                <p>名称：' + name + '</p>\
+                <span>导演：' + direct + ' </span></br>\
+                <p>简介：' + gut + ' </p></br>\
+                <p>主要演员：' + mainActor.reduce(function (prev, curv, index) {
+                    numOne++;
+                    if (numOne == mainActor.length) {
+                        prev += curv + "。"
+                    } else {
+                        prev += curv + "、";
+                    }
+                    return prev;
+                }, "") + ' </p></br>\
+                <p>编剧：' + screenWritter.reduce(function (prev, curv) {
+                    numTwo++;
+                    if (numTwo == screenWritter.length) {
+                        prev += curv + "。"
+                    } else {
+                        prev += curv + "、";
+                    }
+                    return prev;
+                }, "") + ' </p></br>\
+                </div > '
+
+                $(htmlStr)
+                    .appendTo($discreption);
+                // $discreption.hide().find(".mask").remove();
+                $discreption.fadeIn();
+            });
+        }
+
+        /*******************************************/
+        var movieSectionClickCallback = $.Callbacks();
+        movieSectionClickCallback.add(handleClick);
+
+        /*******************************************/
+        
+        (function () {
+            console.log(11111);
+            return $.ajax({
+                url: "https://open.duyiedu.com/jq/movie/power",
+                type: "POST",
+                data: {
+                    username: "cst",
+                    password: "123123"
+                }
+            })
+        })().then(function (res) {
+            if (res.data.power == "root") {
+                return $.ajax({
+                    url: "https://open.duyiedu.com/jq/movie/movieList",
+                    type: "GET"
+                })
+            }
+        }).then(function (res) {
+            var data = res.data;
+            var $wrapper = $(".wrapper");
+            var df = $.Deferred();
+            $.each(data, function (index, ele) {
+                var $movieSection = $(".tpl").clone().removeClass("tpl").addClass("movieSection");
+                $movieSection
+                    .data({
+                        id: ele.id
+                    })
+                    .on("click", function getData() {
+                        cb.fire(clear);
+                        df.resolve($(this)); //注意
+                        // cb.fire(clear);
+                        movieSectionClickCallback.fire(ele.id);
+                    })
+                    .children()
+                    .eq(0)
+                    .attr("src", ele.poster)
+                    .next()
+                    .text(ele.name);
+                $wrapper.append($movieSection);
+            });
+        })
+    </script>
+</body>
+
+</html>
