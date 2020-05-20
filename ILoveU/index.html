@@ -138,7 +138,7 @@ window.onload=function starttime(){
         var time = (msec/1000);                         // ºÁÃë/1000
         var day = parseInt(time/86400);                 // Ìì  24*60*60*1000 
         var hour = parseInt(time/3600)-24*day;          // Ð¡Ê± 60*60 ×ÜÐ¡Ê±Êý-¹ýÈ¥µÄÐ¡Ê±Êý=ÏÖÔÚµÄÐ¡Ê±Êý 
-        var minute = parseInt(time%3600/60);            // ·Ö -(day*24) ÒÔ60ÃëÎªÒ»Õû·Ý È¡Óà Ê£ÏÂÃëÊý ÃëÊý/60 ¾ÍÊÇ·ÖÖÓÊý
+        var minute = parseInt(time%3600/60);            // ·1Ö -(day*24) ÒÔ60ÃëÎªÒ»Õû·Ý È¡Óà Ê£ÏÂÃëÊý ÃëÊý/60 ¾ÍÊÇ·ÖÖÓÊý
         var second = parseInt(time%60);                 // ÒÔ60ÃëÎªÒ»Õû·Ý È¡Óà Ê£ÏÂÃëÊý
 //              console.log(hour+":"+minute+":"+second)
 //              alert(hour)
