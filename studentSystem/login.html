@@ -42,7 +42,7 @@
             var password = form.password.value;
             var data = "appkey=TANGYC_1590676462148&account=" + account + "&password=" + password;
             // console.log(data);
-            ajax("POST", "http://open.duyiedu.com//api/student/stuLogin", data, function (result) {
+            ajax("POST", "https://open.duyiedu.com//api/student/stuLogin", data, function (result) {
                 // console.log(result);
                 if (result.status == "success") {
                     setCookie("account", account);

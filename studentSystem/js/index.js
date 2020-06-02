@@ -175,7 +175,7 @@ function transformData(url, dataAjax, cb) {
     for (var prop in dataAjax) {
         str += "&" + prop + "=" + dataAjax[prop];
     }
-    ajax("GET", "http://open.duyiedu.com" + url, str, function (result) {
+    ajax("GET", "https://open.duyiedu.com" + url, str, function (result) {
         if (result.status == "success") {
             cb(result);
         } else {
