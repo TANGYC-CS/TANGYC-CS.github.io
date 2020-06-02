@@ -52,7 +52,7 @@
             var rePassword = registerForm.rePassword.value;
             var data = "appkey=TANGYC_1590676462148&account=" + account + "&username=" + username + "&password=" + password + "&rePassword=" + rePassword;
             console.log(data);
-            ajax("POST", "https://open.duyiedu.com//api/student/stuRegister", data, function (result) {
+            ajax("POST", "httpss://open.duyiedu.com//api/student/stuRegister", data, function (result) {
                 console.log(result);
                 if (result.status == "success") {
                     alert(result.msg);

@@ -11,10 +11,10 @@ function ajax(method, url, data, cb, isAsync) {
     // get   url + '?' + data
     // post 
     var xhr = null;
-    if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
+    if (window.XMLhttpsRequest) {
+        xhr = new XMLhttpsRequest();
     } else {
-        xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        xhr = new ActiveXObject('Microsoft.XMLhttps');
     }
 
     // xhr.readyState    1 - 4  监听是否有响应
