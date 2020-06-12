@@ -1,0 +1,122 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+html, body{
+    height: 100%;
+}
+.box {
+    width: 600px;
+    margin: 0 auto;
+    height: 100%;
+}
+.box h4 {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background-color: #808080;
+}
+.box .content {
+    background-color: #eee;
+    height: calc(100% - 90px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.content .mine {
+    float: right;
+    width: 55%;
+    position: relative;
+}
+.content .robot {
+    float: left;
+    width: 55%;
+    position: relative;
+}
+.content .text{
+    padding: 6px 14px;
+    margin: 8px 10px;
+    border-radius: 5px;
+    max-width: 270px;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+.content .avator {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.content .mine .avator {
+    margin-top: 8px;
+    margin-right: 8px;
+}
+.content .robot .avator {
+    margin-top: 3px;
+    margin-left: 8px;
+}
+.content .mine .avator {
+    float: right;
+}
+.content .mine .text{
+    float: right;
+    background-color: greenyellow;
+}
+.content .mine .text::after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 10px;
+    right: 32px;
+    border: 10px solid transparent;
+    border-left-color: greenyellow;
+}
+.content .robot .avator{
+    float: left;
+}
+.content .robot .text{
+    float: left;
+    background-color: #fff;
+    padding: 6px 8px;
+    margin: 3px 10px;
+}
+.content .robot .text::after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 5px;
+    left: 32px;
+    border: 10px solid transparent;
+    border-right-color: #fff;
+}
+.box .content::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.input-box {
+    height: 50px;
+    width: 100%;
+    background-color: #ddd;
+}
+.input-box .input-text {
+    width: 515px;
+    height: 30px;
+    border: none;
+    outline: none;
+    margin: 11px 1px 11px 9px;
+}
+.input-box .input-btn {
+    width: 60px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #ccc;
+    cursor: pointer;
+}
+.input-box .input-btn:hover {
+    background-color: #aaa;
+    color: #fff;
+}
