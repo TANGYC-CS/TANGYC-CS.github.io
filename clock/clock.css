@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.clock {
+    position: relative;
+    left: 0;
+    top: 60px;
+    right: 0;
+    /* bottom: 0; */
+    margin: auto;
+    width: 512px;
+    height: 512px;
+    background-image: url(./imgs/clock.png);
+    z-index: 0;
+}
+.second {
+    position: absolute;
+    top: 180px;
+    left: 246px;
+    transform: rotate(180.5deg);
+    transform-origin: 50% 27.44%;
+    z-index: 4;
+}
+.minute {
+    position: absolute;
+    top: 240px;
+    left: 238px;
+    transform: rotate(181deg);
+    transform-origin: 50% 16px;
+    z-index: 3;
+}
+.hour {
+    position: absolute;
+    top: 240px;
+    left: 238px;
+    transform: rotate(181deg);
+    transform-origin: 50% 16px;
+    z-index: 2;
+}

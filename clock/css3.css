@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: black;
+}
+/* 一  叶子导航栏  border-top-left-radius  */
+/* div{
+    height: 200px;
+    width: 400px;
+    position: absolute;
+    border: 2px solid #fff;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    border-top-left-radius: 200px 200px;
+    border-bottom-right-radius: 200px 200px ;
+} */
+
+/* 二 box-shadow（inset）水平 垂直 模糊 （传播的距离） 阴影的颜色 */
+/* div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    background: transparent;
+    border: 1px solid #fff;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    box-shadow: 26px 11px 3px 3px #0ff,
+                inset 26px 11px 3px 3px #f0f;
+    box-shadow: inset 26px 0px 3px 3px #f0f;
+} */
+
+/* 发光的水晶球 */
+/* div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    background: transparent;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    border-radius: 50%;
+    box-shadow: inset 0 0 40px #fff,
+                inset -45px 0 70px #f0f,
+                inset -10px 0 70px #0ff,
+                inset -10px 0 150px #f0f,
+                inset 10px 0 150px #0ff,
+                0 0 40px #fff,
+                -10px 0 60px #f0f,
+                10px 0 60px #0ff;
+} */
+
+
+/* 发光的小太阳 */
+/* div{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: #fff;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border-radius: 50%;
+    box-shadow: 0 0 45px 45px #fff,
+                0 0 90px 90px #ff0;
+} */
+
+/* 三  border-image */
+/* div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    background: transparent;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    border: 20px solid pink;
+    border-image-source: linear-gradient(red,yellow);
+    border-image-slice: 10;
+} */
+
+/* 四  text-shadow 浮雕效果 */
+/* div {
+    position: absolute;
+    left: calc(50% - 350px);
+    top: 150px;
+    width: 700px;
+    height: 300px;
+    font-size: 80px;
+    color: #ddd;
+    text-shadow: 2px 2px 2px #000,-2px -2px 2px #fff;
+} */
+/* 镂刻效果 */
+/* div {
+    position: absolute;
+    left: calc(50% - 350px);
+    top: 150px;
+    width: 700px;
+    height: 300px;
+    font-size: 80px;
+    color: #ddd;
+    text-shadow: -2px -2px 2px #000,2px 2px 2px #fff;
+} */
+/* 阴影加强 */
+/* div {
+    position: absolute;
+    left: calc(50% - 350px);
+    top: 150px;
+    font-size: 80px;
+    color: #ddd;
+    cursor: pointer;
+    text-shadow: 0px 0px 8px #0f0,
+                 0px 0px 8px #0e0,
+                 0px 0px 8px #0c0;
+    transition: all 0.3s;
+}
+div::before{
+    content: "NO ";
+    opacity: 0;
+}
+div:hover{
+    text-shadow: 0px 0px 8px #f00,
+                 0px 0px 8px #f20,
+                 0px 0px 8px #f30;
+    transition: all 1s;
+}
+div:hover::before{
+    opacity: 1;
+} */
+/* 五  flex  用flex实现项目居中 */
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper {
+    border: skyblue 2px solid;
+    resize: both;
+    overflow: auto;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content {
+    width: 200px;
+    height: 200px;
+    border: 2px solid seagreen;
+} */
+/* 可动态添加的导航栏 */
+/* .wrapper {
+    position: absolute;
+    left: calc(50% - 300px);
+    top: 50px;
+    width: 320px;
+    height: 300px;
+    border: 2px solid black;
+    display: flex;
+}
+.item {
+    flex: 1 1 auto;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    color: #f30;
+    cursor: pointer;
+}
+.item:hover {
+    background-color: #f30;
+    color: #fff;
+} */
+/* 实现等分布局 二等分 四等分 中间可加margin */
+/* .wrapper {
+    resize: both;
+    overflow: hidden;
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    display: flex;
+}
+.content {
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    height: 200px;
+    border: 1px solid teal;
+}
+.content:nth-of-type(2) {
+    flex: 0 0 200px;
+    flex: 0 0 50%;
+} */
+/* 实现流式布局  模拟float */
+/* .wrapper {
+    width: 800px;
+    height: 1000px;
+    border: 1px solid teal;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.content {
+    box-sizing: border-box;
+    width: 200px;
+    height: 200px;
+    border: 1px solid teal;
+} */
+/* flex实现圣杯布局 */
+/* .wrapper {
+    resize: both;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.header, .footer {
+    flex: 0 0 20%;
+    border: 1px solid forestgreen;
+    box-sizing: border-box;
+}
+.contain {
+    flex: 1 1 auto;
+    border: 1px solid darkorange;
+    box-sizing: border-box;
+    display: flex;
+}
+.left, .right {
+    flex: 0 0 20%;
+    border: 1px solid darkorchid;
+    box-sizing: border-box;
+}
+.center {
+    flex: 1 1 auto;
+    border: 1px solid hotpink;
+    box-sizing: border-box;
+} */
+/* 日升日落小练习 */
+@keyframes space {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+    }
+
+}
+@keyframes sun {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.6;
+        
+    }
+    /* 30% {
+        left: 30%;
+    } */
+    50% {
+        top: 20px;
+        opacity: 1;
+        left: 35%;
+        transform: scale(0.8);
+    }
+    60% {
+        top: 20px;
+        opacity: 1;
+        left: 37%;
+        transform: scale(0.8);
+    }
+    75% {
+        opacity: 0.6;
+        /* left: 45%; */
+    }
+    100% {
+        opacity: 0;
+        left: 73%;
+    }
+}
+@keyframes moon {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        top: 20px;
+        opacity: 0;
+    }
+    75% {
+        opacity: 0.2;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.space {
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(to bottom,rgb(0,130,255),rgb(220,255,255));
+    animation: space 10s infinite;
+}
+.sun {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 400px;
+    left: 20%;
+    background-color: yellow;
+    box-shadow: inset 0 0 30px #ddd,
+                0 0 20px 20px yellow,
+                inset 0 0 30px 30px yellow;
+    /* animation: sun 10s cubic-bezier(0.11, 0.69, 0.58, 1.02) infinite; */
+    animation: sun 10s ease-out infinite;
+}
+.moon {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 20px;
+    right: 17%;
+    opacity: 0;
+    border-radius: 50%;
+    background-color: #eee;
+    box-shadow: inset 0 0 20px #fff,
+                inset -25px 0 30px #f0f,
+                inset -10px 0 30px #0ff,
+                inset -10px 0 70px #f0f,
+                inset 10px 0 70px #0ff,
+                0 0 20px #fff,
+                -4px 0 30px #f0f,
+                4px 0 30px 10px #0ff;
+    animation: moon 10s cubic-bezier(0, 0, 1, 1) infinite;
+
+
+}
+ 
+
+
+/* 
+① border-radius 、
+② box-shadow 、
+③ border-image: 
+border-image-source 、 [border-image-slice, border-image-width,
+border-image-outset] 、 border-image-repeat 
+    border-image-slice: 默认值为100% 截取的意思 上右下左 分割九个部分 它的值一般和border的值一样大
+    border-image-outset: 让背景图片进行填充
+    border-image-width: 默认值是1,设置border里面图片背景的宽度  auto会像取slice的值加px
+    border-image-repeat: 默认为stretch round sapce   可以有两个参数（第一个水平方向，第二个竖直方向）
+    border-image: linear-graient(to top right(角度deg),颜色 颜色终止位置,颜色)  radial-gradient()
+    border-image: url()可以添多个背景图片 这里有容错机制的大用 要调backgroud-position backgroud-size backgroud-repeat
+    background-origin: 默认是padding-box; padding-box border-box content-box 从哪个开始渲染，从哪个开始定位
+    -webkit-backgroud-clip: 和origin相反 从哪里截断 padding-box border-box content-box 
+                            text(文字体截图片) 要与-webkit-text-fill-color: transparent;一起写
+    backgroud-attachment: scroll local(图片跟着文字动) fixed
+    backgroud-size: cover contain 
+    backgroud-repeat:repeat-x repeat-y (round space) 
+④ text text-shadow(x y blur color)
+⑤ -webkit-text-stroke: 2px color; 文字描边 与font-family:simsun;color:transparent 连用可有好的文字效果
+⑥ @font-face {font-family:"给字体包起得名字"; src:""}    用: div{font-family:"给字体包起得名字";}
+            truetpye 微软 苹果  .ttf
+            opentype 微软 Adobe .opt
+            woff               .woff
+                               .eat
+                               .svg
+            MIME协议是映射关系   浏览器请求操作系统调用扩展程序
+⑦ columns:  gap(空隙) count(几列) rule(空隙分隔) 
+⑧ box: 盒模型很重要，能够决定结构的复杂程度
+        原来的盒模型 : boxWidth = width + border * 2 + padding * 2;
+        IE6盒模型(怪异模式) : boxWidth = width;  contentwidth = boxWidth - border* 2 - padding * 2; 需要触发
+        box-sizing: border-box；
+        场景: 宽度不固定(百分比)，但是内边距固定;
+             填写输入框的时候，输入框天生带有2px的border大小，产品经理给的大小直接写;
+             用户自定义，后端传的宽高;
+⑨ overflow: overflow-x:auto; 这个属性非常重要(神马搜索明星);  用户改变大小可以与overflow一起设置- resize:both; 会产生性能消耗；
+⑩ flex: flex-grow,flex-shrink,flex-basis(0 1 auto)后两个属性可选。
+         auto (1 1 auto) 和 none (0 0 auto) --> 项目上设置
+         盒子上设置  display:flex
+                   flex-direction: row(横排)  row-reverse  column(竖排)  column-reverse
+                   flex-wrap: nowrap(默认)  wrap  wrap-reverse
+                   justify-content: flex-start(默认值) flex-end center space-between space-around
+                   align-items: stretch(默认) flex-start flex-end center baseline stretch  主要还是针对单行元素来进行处理的
+                   align-content: stretch(默认，在没有盒子没有设置高的情况下才会生效) flex-start flex-end center space-between space-around 针对多行的元素居中  
+         项目上设置  order:-1;  (默认值为0) 作用相当于z-index;
+                   align-self: auto(默认值，权重比align-items大，但是权重比align-content小) flex-start flex-end center baseline stretch 
+                   flex-grow: num（伸 默认值1 剩余的空间按照比例进行瓜分 ）
+                   flex-shrink: num (缩 默认值1 多的空间按比例加权计算 加权值是内容区的值  被英文不换行的时候不会进行压缩 如果想要换行 word-break:break-word)
+                   flex-basis: (可以覆盖width的值，不完全等于width，当没设置width的时候当内容大于basis的值后宽度会被内容撑开
+                                当basis和width一起用的时候 内容宽度取值的区间width和basis大小区间)
+⑪transition: transition-property: width,height(all)
+              transition-duration: 1s
+              transition-timeing-function: linear(cubic-bezier) steps(帧数，end)-----steps(帧数，start)
+              transition-delay: 0s(默认)
+⑫animation:  @keyframes run 百分号显示(0% == from | 100% == to)，每一段动画之间不需要加逗号
+              一个div可以有多个关键帧
+              关键帧容器名称(run)  timeing-function每一段运动状态
+              前四个属性和transition的属性一样
+              后四个属性: iteration-count: 1(默认执行一次/infinite)
+                        direction: normal、reverse、alternate(前提是执行次数大于等于2，钟摆式运动 )、alternate-reverse
+                        play-state: running(运动) paused(暂停)     
+                        fill-mode: none forwards(运动结束后保留最后一帧) backwards(运动开始之前保留第一帧) both
+              steps(帧数，end)-----steps(帧数，start)
+              end 保留当前帧状态，直到这段动画时间结束
+              start 保留下一帧状态，直到这段动画时间结束
+              steps(1,end) === step-end   step(1,start) === step-start
+
+
+
+
+⑬⑭⑮⑯⑰⑱⑲⑳㉑㉒㉓㉔㉕㉖㉗㉘㉙㉚㉛㉜㉝㉞㉟㊱㊲㊳㊴㊵㊶
+*/
+
