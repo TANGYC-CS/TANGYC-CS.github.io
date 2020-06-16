@@ -15,5 +15,5 @@ setInterval(function () {
     seccondIndicator.style.transform = "rotate(" + numSecond + "deg)";
     minuteIndicator.style.transform = "rotate(" + numMinute + "deg)";
     hourIndicator.style.transform = "rotate(" + numHour + "deg)";
-}, 1000)
+}, 0)
 
