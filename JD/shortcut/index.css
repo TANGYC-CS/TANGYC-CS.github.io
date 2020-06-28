@@ -1,0 +1,139 @@
+.shortcut {
+    height: 260px;
+    width: 100%;
+    background-color: lightseagreen;
+}
+.shortcut .w .shortcut-list {
+    width: 100%;
+    float: left;
+}
+.shortcut .w .shortcut-list .main {
+    width: 800px;
+    height: 260px;
+    /* background-color: burlywood; */
+    margin-left: 190px;
+}
+.shortcut-list .seckill-item {
+    position: relative;
+    width: 200px;
+    height: 260px;
+    display: inline-block;
+}
+
+.slider_item {
+    height: 100%;
+    min-height: 1px;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+.shortcut-list .seckill-item__image {
+    width: 140px;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.shortcut-list .seckill-item__name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shortcut-list .seckill-item__name {
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 13px;
+}
+.shortcut-list .seckill-item__price {
+    border: 1px solid #e1251b;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 24px;
+    overflow: hidden;
+    background-color: #e1251b;
+}
+
+.shortcut-list .seckill-item__price {
+    width: 160px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+}
+.shortcut-list .seckill-item__price .price-miaosha {
+    width: 92px;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    float: left;
+}
+.shortcut-list .seckill-item__price .price-miaosha {
+    width: 92px;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    float: left;
+}
+.shortcut-list .seckill-item__price .price-miaosha:before {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-color: transparent white transparent transparent;
+    border-style: solid;
+    border-width: 22px 8px 0 0;
+    position: absolute;
+    top: 0;
+    left: 84px;
+}
+.shortcut-list .seckill-item__price .price-miaosha i {
+    font-size: 12px;
+    font-weight: 400;
+    padding-right: 2px;
+}
+.shortcut-list .seckill-item__price .price-origin {
+    height: 100%;
+    width: 66px;
+    float: right;
+    background: #fff;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    line-height: 22px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: line-through;
+    vertical-align: top;
+}
+
+
+.shortcut .w .shortcut-curtdown {
+    float: left;
+    margin-left: -100%;
+    width: 190px;
+    height: 260px;
+    background-color: red;
+}
+.shortcut .w .shortcut-brand {
+    float: left;
+    margin-left: -200px;
+    width: 200px;
+    height: 260px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: red;
+}
