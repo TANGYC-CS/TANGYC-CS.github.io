@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工资表</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="salary-box">
+        <table border="1">
+            <caption>七月份的工资表</caption>
+            <tr>
+                <th class="work-name">姓名</th>
+                <th>工日</th>
+                <th>加班</th>
+                <th>全勤奖</th>
+                <th>制度奖</th>
+                <th>开会补助</th>
+                <th>班长补助</th>
+                <th></th>
+                <th>合计</th>
+            </tr>
+            <tr>
+                <td>皮艰俊</td>
+                <td class="workday"><input type="number" value="30" max="31" min="0"></td>
+                <td class="over-time"><input type="number" value="10"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                </td>
+                <td class="system-pay"><input type="text" value="是"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="500"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+            <tr>
+                <td>江有文</td>
+                <td class="workday"><input type="number" value="23"></td>
+                <td class="over-time"><input type="number" value="8"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                </td>
+                <td class="system-pay"><input type="text" value="是"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="0"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+            <tr>
+                <td>吴河清</td>
+                <td class="workday"><input type="number" value="28"></td>
+                <td class="over-time"><input type="number" value="8"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                </td>
+                <td class="system-pay"><input type="text" value="否"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="0"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+            <tr>
+                <td>钟建高</td>
+                <td class="workday"><input type="number" value="30"></td>
+                <td class="over-time"><input type="number" value="10"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                </td>
+                <td class="system-pay"><input type="text" value="否"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="0"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+            <tr>
+                <td>孙建军</td>
+                <td class="workday"><input type="number" value="28"></td>
+                <td class="over-time"><input type="number" value="10"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                </td>
+                <td class="system-pay"><input type="text" value="是"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="0"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+            <tr>
+                <td>曾舵付</td>
+                <td class="workday"><input type="number" value="30"></td>
+                <td class="over-time"><input type="number" value="7"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                </td>
+                <td class="system-pay"><input type="text" value="是"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="0"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+            <tr>
+                <td>王孔凡</td>
+                <td class="workday"><input type="number" value="28"></td>
+                <td class="over-time"><input type="number" value="5"></td>
+                <td class="is-full">
+                    <input type="text" value="是">
+                <td class="system-pay"><input type="text" value="是"></td>
+                <td></td>
+                <td class="monitor"><input type="number" value="0"></td>
+                <td></td>
+                <td class="total-person">6000</td>
+            </tr>
+        </table>
+        <button class="pay-btn" value="点击计算工资">点击计算工资</button>
+    </div>
+    <script src="./jquery.js"></script>
+    <script src="./salary.js"></script>
+
+</body>
+
+</html>

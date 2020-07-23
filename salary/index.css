@@ -1,0 +1,32 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+table {
+    border-collapse: collapse;
+    
+    /* width: 53vh; */
+    text-align: center;
+}
+.salary-box{
+    width: 335px;
+    margin:0 auto;
+}
+caption {
+    padding-bottom: 15px;
+}
+
+input {
+    width: 30px;
+    border: none;
+    text-align: center;
+}
+
+.work-name {
+    width: 55px;
+}
+
+.pay-btn {
+    margin-top: 9px;
+}
