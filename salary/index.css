@@ -30,3 +30,6 @@ input {
 .pay-btn {
     margin-top: 9px;
 }
+.salary-box .monitor input {
+    width: 40px;
+}
